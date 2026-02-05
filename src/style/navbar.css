@@ -1,0 +1,46 @@
+.ikins-nav {
+  line-height: 4rem;
+  background-color: #3cb9d1;
+}
+.navbar-brand {
+  color: white;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+}
+.navbar-toggler {
+  font-size: 28px;
+  outline: none;
+  border: none;
+  margin-right: 20px;
+}
+.navbar-toggler:active {
+  outline: none;
+  border: none;
+}
+.myLink {
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 400;
+}
+.myLink:active {
+  color: #ff6b08;
+}
+.myLink:hover {
+  color: #ff6b08;
+}
+.myNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3cb9d1;
+  color: white;
+}
+
+.nav-item {
+  padding: 0 0.7rem;
+}
+span.navbar-toggler-icon::after {
+  color: white;
+}
