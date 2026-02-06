@@ -1,11 +1,11 @@
 .ikins-nav {
-  line-height: 4rem;
+  line-height: 3rem;
   background-color: #3cb9d1;
 }
 .navbar-brand {
   color: white;
   font-size: 2rem;
-  padding-left: 1.5rem;
+  padding-left: 2.5rem;
 }
 .navbar-toggler {
   font-size: 28px;
@@ -16,19 +16,6 @@
 .navbar-toggler:active {
   outline: none;
   border: none;
-}
-.myLink {
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 22px;
-  font-weight: 400;
-}
-.myLink:active {
-  color: #ff6b08;
-}
-.myLink:hover {
-  color: #ff6b08;
 }
 .myNav {
   display: flex;
@@ -43,4 +30,46 @@
 }
 span.navbar-toggler-icon::after {
   color: white;
+}
+/*  */
+
+.myLink {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+}
+.navbar-nav .nav-link.active {
+  color: #ff9d00;
+}
+.myLink:hover {
+  color: #ff9d00;
+}
+
+.myLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background-color: #ff9d00;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.myLink:hover::after {
+  width: 100%;
+  animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+}
+
+@keyframes heartbeat116 {
+  0%,
+  100% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
 }
