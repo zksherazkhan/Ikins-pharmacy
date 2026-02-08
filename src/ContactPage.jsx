@@ -1,10 +1,10 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./style/contactPage.css";
 import { Alert, Button, Form } from "react-bootstrap";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // import Alert from "@mui/material/Alert";
 
@@ -27,14 +27,14 @@ const ContactPage = () => {
       .then(
         () => {
           setAlert({
-            open: true,
+            show: true,
             message: "Email sent successfully!",
             variant: "success",
           });
         },
         (error) => {
           setAlert({
-            open: true,
+            show: true,
             message: `Failed to send email: ${error.text}`,
             variant: "error",
           });

@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Homepage from "./Homepage";
@@ -6,6 +5,7 @@ import AboutPage from "./AboutPage";
 import ServicesPage from "./ServicesPage";
 import ContactPage from "./ContactPage";
 import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
   return (
