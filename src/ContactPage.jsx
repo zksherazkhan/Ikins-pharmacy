@@ -1,28 +1,48 @@
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import CallIcon from "@mui/icons-material/Call";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./style/contactPage.css";
+import { Alert, Button, Form } from "react-bootstrap";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CallIcon from "@mui/icons-material/Call";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// import Alert from "@mui/material/Alert";
+
 const ContactPage = () => {
   const form = useRef();
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  //emailjs configuration and sending email function
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
-      .sendForm("service_fccac8j", "template_77d9neg", form.current, {
+      .sendForm("service_fccac8j", "template_4ursgne", form.current, {
         publicKey: "pajGkv57u0wfe-aCc",
       })
       .then(
         () => {
-          console.log("SUCCESS!");
+          setAlert({
+            open: true,
+            message: "Email sent successfully!",
+            variant: "success",
+          });
         },
         (error) => {
-          console.log("FAILED...", error.text);
+          setAlert({
+            open: true,
+            message: `Failed to send email: ${error.text}`,
+            variant: "error",
+          });
         },
       );
     e.target.reset();
   };
-
+  //end of emailjs configuration and sending email function
   return (
     <>
       <div className="contact-page">
@@ -41,50 +61,63 @@ const ContactPage = () => {
                 Get In Touch
               </h2>
               <div className="p-4">
+                {/* Alert Section */}
+                {alert.show && (
+                  <Alert
+                    variant={alert.variant}
+                    onClose={() => setAlert({ ...alert, show: false })}
+                    dismissible
+                    className="shadow-sm"
+                  >
+                    <Alert.Heading>
+                      {alert.variant === "success" ? "Success!" : "Error"}
+                    </Alert.Heading>
+                    <p className="mb-0">{alert.message}</p>
+                  </Alert>
+                )}
+                {/* Contact form using emailjs to send emails directly from the client side */}
                 <form ref={form} onSubmit={sendEmail}>
-                  <label className="form-label ">Name</label>
-                  <input
-                    type="text"
-                    className="form-control mb-2"
-                    id="name"
-                    aria-describedby="emailHelp"
-                    name="name"
-                    required
-                  />
-
-                  <label className="form-label">Email address</label>
-                  <input
-                    type="email"
-                    className="form-control mb-2"
-                    id="email"
-                    aria-describedby="emailHelp"
-                    name="title"
-                    required
-                  />
+                  <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label className="form-label ">Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control mb-2"
+                      id="name"
+                      aria-describedby="emailHelp"
+                      name="user_name"
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className="form-label">
+                      Email address
+                    </Form.Label>
+                    <Form.Control
+                      type="email"
+                      className="form-control mb-2"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      name="user_email"
+                      required
+                    />
+                  </Form.Group>
                   <div id="emailHelp" className="form-text mb-2">
                     We ll never share your email with anyone else.
                   </div>
-
-                  <label className="form-label">Comment..</label>
-                  <textarea
-                    className="form-control mb-2"
-                    id="Textarea"
-                    rows="3"
-                    required
-                    name="message"
-                  ></textarea>
-                  {/* 
-                  <input
-                    type="file"
-                    className="form-control mb-2"
-                    id="file"
-                    aria-describedby="emailHelp"
-                    required
-                  /> */}
-
-                  <button type="submit" className="contact-btn">
+                  <Form.Group className="mb-3" controlId="formMessage">
+                    <Form.Label className="form-label">Comment..</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      className="form-control mb-2"
+                      id="Textarea"
+                      rows="3"
+                      required
+                      name="message"
+                    />
+                  </Form.Group>
+                  <Button type="submit" className="contact-btn">
                     Submit
-                  </button>
+                  </Button>
                 </form>
               </div>
             </div>
@@ -107,6 +140,7 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
+        {/* // Snackbar component to display success or error messages after form submission */}
       </div>
     </>
   );
