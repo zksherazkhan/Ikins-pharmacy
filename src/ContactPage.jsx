@@ -1,7 +1,28 @@
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import "./style/contactPage.css";
 const ContactPage = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_fccac8j", "template_77d9neg", form.current, {
+        publicKey: "pajGkv57u0wfe-aCc",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        },
+      );
+    e.target.reset();
+  };
+
   return (
     <>
       <div className="contact-page">
@@ -20,54 +41,47 @@ const ContactPage = () => {
                 Get In Touch
               </h2>
               <div className="p-4">
-                <form>
-                  <div className="mb-2">
-                    <label className="form-label">Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name"
-                      aria-describedby="emailHelp"
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <label className="form-label">Surname</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name"
-                      aria-describedby="emailHelp"
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <label className="form-label">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="email"
-                      aria-describedby="emailHelp"
-                    />
-                    <div id="emailHelp" className="form-text">
-                      We ll never share your email with anyone else.
-                    </div>
+                <form ref={form} onSubmit={sendEmail}>
+                  <label className="form-label ">Name</label>
+                  <input
+                    type="text"
+                    className="form-control mb-2"
+                    id="name"
+                    aria-describedby="emailHelp"
+                    name="name"
+                    required
+                  />
+
+                  <label className="form-label">Email address</label>
+                  <input
+                    type="email"
+                    className="form-control mb-2"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    name="title"
+                    required
+                  />
+                  <div id="emailHelp" className="form-text mb-2">
+                    We ll never share your email with anyone else.
                   </div>
 
-                  <div className="mb-2">
-                    <label className="form-label">Comment..</label>
-                    <textarea
-                      className="form-control"
-                      id="Textarea"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                  <div className="mb-2">
-                    <input
-                      type="file"
-                      className="form-control"
-                      id="file"
-                      aria-describedby="emailHelp"
-                    />
-                  </div>
+                  <label className="form-label">Comment..</label>
+                  <textarea
+                    className="form-control mb-2"
+                    id="Textarea"
+                    rows="3"
+                    required
+                    name="message"
+                  ></textarea>
+                  {/* 
+                  <input
+                    type="file"
+                    className="form-control mb-2"
+                    id="file"
+                    aria-describedby="emailHelp"
+                    required
+                  /> */}
+
                   <button type="submit" className="contact-btn">
                     Submit
                   </button>

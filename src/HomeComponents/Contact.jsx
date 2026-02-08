@@ -77,8 +77,8 @@ const Contact = () => {
 };
 
 export const SocialMediaIcons = () => {
-  const contactNum = "26777148663";
-  const message = "Hello , did you do consultation for patients?";
+  const contactNum = "26771701461";
+  const message = "Hello , do you do consultation for patients?";
   const whatsappUrl = `https://wa.me/${contactNum}?text=${encodeURIComponent(
     message,
   )}`;
