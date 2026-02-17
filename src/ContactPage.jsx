@@ -13,7 +13,7 @@ const ContactPage = () => {
   const [alert, setAlert] = useState({
     open: false,
     message: "",
-    severity: "success",
+    variant: "success",
   });
 
   //emailjs configuration and sending email function
