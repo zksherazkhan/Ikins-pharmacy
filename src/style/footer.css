@@ -1,17 +1,17 @@
 footer {
-  /* margin-top: auto; */
   background-color: #1a4d6d;
   color: #fff;
 }
-.footer-text {
-  padding: 30px 60px 0 30px;
-}
 
-.footerLinks ul li,
+ul li,
 a {
   text-decoration: none;
   color: #fff;
   list-style-type: none;
+}
+.f-link:hover {
+  color: #ff9d00;
+  transition: 0.5s;
 }
 @media screen and (max-width: 600px) {
   .footerLinks ul {

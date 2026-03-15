@@ -1,14 +1,14 @@
-import About from "./HomeComponents/About.jsx";
-import "./style/AboutPage.css";
-import img from "./assets/aboutImg.jpg";
+import "./style/aboutPage.css";
+import "./style/AboutPageHeading.css";
+import aboutImg from "./assets/aboutImg.jpg";
+import servicesImg from "./assets/aboutImg.jpg";
+import laldaImg from "./assets/lalda.jpg";
+import Contact from "./HomeComponents/Contact.jsx";
+import koomaImg from "./assets/kooma.jpg";
+import { SocialMediaIcons } from "./HomeComponents/Contact.jsx";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import servicesImg from "./assets/aboutImg.jpg";
-import Contact from "./HomeComponents/Contact.jsx";
-import { SocialMediaIcons } from "./HomeComponents/Contact.jsx";
-import laldaImg from "./assets/lalda.jpg";
-import koomaImg from "./assets/kooma.jpg";
 const TeamData = [
   {
     id: 1,
@@ -18,7 +18,7 @@ const TeamData = [
   },
   {
     id: 2,
-    img: img,
+    img: laldaImg,
     name: "Sheraz khan",
     position: "Director & IT Administrator",
   },
@@ -30,7 +30,7 @@ const TeamData = [
   },
   {
     id: 4,
-    img: img,
+    img: koomaImg,
     name: "Mr MAx",
     position: "Human Resource Manager",
   },
@@ -82,48 +82,43 @@ const AboutComponent = () => {
   };
 
   return (
-    <>
-      <div className="about">
-        <h1 className="text-center my-5" style={{ color: "#1a4d6d" }}>
-          About Us
-        </h1>
-        <About />
-        <div className="container " style={{ marginTop: "8rem" }}>
-          <h1 className="text-center mt-4">Meet Our Team</h1>
-          <p className="text-center mt-4">
-            Embrace your wellness journey with our dedicated team prioritizing
-            your well-being. At Ikins Pharmacy, your health takes precedence.
-          </p>
-          <div className="team-card my-5">
-            <Slider {...settings}>
-              {TeamData.map((val) => {
-                return (
-                  <div key={val.name}>
-                    <div className="card p-2">
-                      <img
-                        className="card-img-top"
-                        src={val.img}
-                        alt="Card image cap"
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{val.name}</h5>
-                        <p className="card-text" style={{ lineHeight: "30px" }}>
-                          {val.position}
-                        </p>
-                      </div>
+    <div className="about">
+      <AboutHeading />
+      <div className="container " style={{ marginTop: "8rem" }}>
+        <h1 className="text-center mt-4">Meet Our Team</h1>
+        <p className="text-center mt-4">
+          Embrace your wellness journey with our dedicated team prioritizing
+          your well-being. At Ikins Pharmacy, your health takes precedence.
+        </p>
+        <div className="team-card my-5">
+          <Slider {...settings}>
+            {TeamData.map((val) => {
+              return (
+                <div key={val.name}>
+                  <div className="card p-2">
+                    <img
+                      className="card-img-top"
+                      src={val.img}
+                      alt="Card image cap"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{val.name}</h5>
+                      <p className="card-text" style={{ lineHeight: "30px" }}>
+                        {val.position}
+                      </p>
                     </div>
                   </div>
-                );
-              })}
-            </Slider>
-          </div>
+                </div>
+              );
+            })}
+          </Slider>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-// our services component
+// why our services component
 
 const ChooseServices = () => {
   const Data = [
@@ -165,34 +160,64 @@ const ChooseServices = () => {
     },
   ];
   return (
-    <>
-      <div
-        className="container "
-        style={{ marginBottom: "6rem", marginTop: "6rem" }}
-      >
-        <div className="row">
-          <div className="col-md-6 col-sm-12">
-            <h2>Why Choose Ikins Pharmacy</h2>
-            <div className="our-services p-4">
-              {Data.map((val) => {
-                return (
-                  <div className="my-4" key={val.id}>
-                    <h4>{val.title}</h4>
-                    <p style={{ fontSize: "15px", color: "#7d7d7d" }}>
-                      {val.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+    <div
+      className="container "
+      style={{ marginBottom: "6rem", marginTop: "6rem" }}
+    >
+      <div className="row">
+        <div className="col-md-6 col-sm-12">
+          <h2>Why Choose Ikins Pharmacy</h2>
+          <div className="our-services p-4">
+            {Data.map((val) => {
+              return (
+                <div className="my-4" key={val.id}>
+                  <h4>{val.title}</h4>
+                  <p style={{ fontSize: "15px", color: "#7d7d7d" }}>
+                    {val.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-          <div className="col-md-6 col-sm-12">
-            <div className="services-img">
-              <img src={servicesImg} alt="" />
-            </div>
+        </div>
+        <div className="col-md-6 col-sm-12">
+          <div className="services-img">
+            <img src={servicesImg} alt="" />
           </div>
         </div>
       </div>
-    </>
+    </div>
+  );
+};
+
+const AboutHeading = () => {
+  return (
+    <div className="container row about-heading-section">
+      <h1 className="text-center mb-5" style={{ color: "#1a4d6d" }}>
+        About Us
+      </h1>
+      <div className="col-md-6  about-Img-box">
+        <div className="myImgBox">
+          <img src={aboutImg} alt="" />
+        </div>
+      </div>
+      <div className="col-md-6 about-text">
+        <h1 style={{ color: "#1a4d6d" }}>About Ikins Pharmacy</h1>
+        <p className="about-para">
+          Since 2000, Ikins Pharmacy has been a trusted healthcare partner for
+          the Mahalapye community. As a leading local pharmacy, we are dedicated
+          to providing reliable access to medicine, expert assistance with
+          medical aid claims, and support for Motor Vehicle Accident (MVA)
+          cases. Our commitment goes beyond the counter—we believe in giving
+          back and are proud to support our community through various
+          initiatives. Your health and well-being are at the heart of everything
+          we do.
+        </p>
+        <p className="desing-text">Expert Pharmacist Consultations</p>
+        <p className="desing-text" style={{ width: "70%" }}>
+          Wide Range of Medications
+        </p>
+      </div>
+    </div>
   );
 };

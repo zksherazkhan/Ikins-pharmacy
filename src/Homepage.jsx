@@ -1,4 +1,4 @@
-import About from "./HomeComponents/About";
+import About from "./HomeComponents/HomeAbout";
 import Contact from "./HomeComponents/Contact";
 import Header from "./HomeComponents/Header";
 import Services from "./HomeComponents/Services";
